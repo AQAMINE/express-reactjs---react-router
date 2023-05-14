@@ -1,10 +1,11 @@
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import RootLayout from "./pages/Root";
-import HomePage from "./pages/HomePage";
-import EventsPage from './pages/EventsPage';
-import EventDetailPage from './pages/EventDetailPage';
-import NewEventPage from './pages/NewEventPage';
-import EditEventPage from './pages/EditEventPage';
+import HomePage from "./pages/Home";
+import EventsPage from './pages/Events';
+import EventDetailPage from './pages/EventDetail';
+import NewEventPage from './pages/NewEvent';
+import EditEventPage from './pages/EditEvent';
+import EventsRootLayout from "./pages/EventsRoot";
 
 // Challenge / Exercise
 
@@ -17,7 +18,7 @@ import EditEventPage from './pages/EditEventPage';
 // 2. Add routing & route definitions for these five pages
 //    - / => HomePage
 //    - /events => EventsPage
-//    - /events/<some-id> => EventDetailPage
+//    - /events/<some-id> => EventDetailPage 
 //    - /events/new => NewEventPage
 //    - /events/<some-id>/edit => EditEventPage
 // 3. Add a root layout that adds the <MainNavigation> component above all page components
@@ -34,10 +35,12 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       { index: true, element: <HomePage /> },
-      { path: '/events', element: <EventsPage /> },
-      { path: '/events/:id', element: <EventDetailPage /> },
-      { path: '/events/new', element: <NewEventPage /> },
-      { path: '/events/:id/edit', element: <EditEventPage />}
+      {path: '/events', element: <EventsRootLayout />, children:[
+        { index: true, element: <EventsPage /> },
+        { path: '/events/:eventId', element: <EventDetailPage /> },
+        { path: '/events/new', element: <NewEventPage /> },
+        { path: '/events/:eventId/edit', element: <EditEventPage />}
+      ]}
     ]
   }
 ]);
