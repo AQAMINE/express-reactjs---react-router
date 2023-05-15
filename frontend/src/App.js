@@ -6,7 +6,7 @@ import EventDetailPage from './pages/EventDetail';
 import NewEventPage from './pages/NewEvent';
 import EditEventPage from './pages/EditEvent';
 import EventsRootLayout from "./pages/EventsRoot";
-
+// import { getEvents } from "./api/api.events";
 const router = createBrowserRouter([
   { 
     path: '/',
